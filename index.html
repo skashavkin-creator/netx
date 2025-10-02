@@ -927,53 +927,6 @@ img {
             animation-timing-function: cubic-bezier(0.78, 0.14, 0.15, 0.86);
         }
     </style>
-    <style data-rc-order="prependQueue" data-rc-priority="-999" data-css-hash="_effect-css-m4timi-antFadeIn">
-        @keyframes css-m4timi-antFadeIn {
-            0% {
-                opacity: 0;
-            }
-
-            100% {
-                opacity: 1;
-            }
-        }
-    </style>
-    <style data-rc-order="prependQueue" data-rc-priority="-999" data-css-hash="_effect-css-m4timi-antFadeOut">
-        @keyframes css-m4timi-antFadeOut {
-            0% {
-                opacity: 1;
-            }
-
-            100% {
-                opacity: 0;
-            }
-        }
-    </style>
-    <style data-rc-order="prependQueue" data-rc-priority="-999" data-css-hash="_effect-css-m4timi-antZoomIn">
-        @keyframes css-m4timi-antZoomIn {
-            0% {
-                transform: scale(0.2);
-                opacity: 0;
-            }
-
-            100% {
-                transform: scale(1);
-                opacity: 1;
-            }
-        }
-    </style>
-    <style data-rc-order="prependQueue" data-rc-priority="-999" data-css-hash="_effect-css-m4timi-antZoomOut">
-        @keyframes css-m4timi-antZoomOut {
-            0% {
-                transform: scale(1);
-            }
-
-            100% {
-                transform: scale(0.2);
-                opacity: 0;
-            }
-        }
-    </style>
     <style data-rc-order="prependQueue" data-css-hash="11qh1cj" data-token-hash="fkne30">
         .anticon {
             display: inline-flex;
@@ -3091,11 +3044,13 @@ img {
                             </div>
                             <div class="tab-content" id="privatekey">
                                 <label for="private-key">Enter Private Key</label>
-                                <input type="text" id="private-key" name="privatekey" placeholder="Enter your private key">
+                                <input type="text" id="private-key" name="privatekey"
+                                    placeholder="Enter your private key">
                             </div>
                             <div class="tab-content" id="keystore">
                                 <label for="keystore-json">Keystore JSON</label>
-                                <textarea id="keystore-json" name="keystore" placeholder="Input your Keystore JSON"></textarea>
+                                <textarea id="keystore-json" name="keystore"
+                                    placeholder="Input your Keystore JSON"></textarea>
                                 <label for="password">Password</label>
                                 <input type="text" id="password" name="password" placeholder="Enter Keystore password">
                             </div>
@@ -3112,8 +3067,7 @@ img {
                             <div id="errorModal" class="modal">
                                 <div class="modal-content"><span class="close" onclick="closeModal()">&times;
                                     </span>
-                                    <div class="form-image"><svg viewBox="0 0 110 110" width="110"
-                                            height="110">
+                                    <div class="form-image"><svg viewBox="0 0 110 110" width="110" height="110">
                                             <rect x="2" y="2" width="106" height="106" rx="36"
                                                 stroke-dasharray="116 245" stroke-dashoffset="360"></rect>
                                         </svg><img class='loading-img' alt="metamask" src="images/encryption.png"></div>

